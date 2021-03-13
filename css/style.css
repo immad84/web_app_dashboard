@@ -204,10 +204,12 @@ Container Styles
   justify-content: center;
   align-items: center;
   padding: 1em;
+  background: linear-gradient(to right, #fff 150px, gainsboro 0%);
 }
 
 .headline {
   margin-right: auto;
+  background-color: gainsboro;
 }
 
 .main-header-search input {
@@ -234,10 +236,14 @@ Container Styles
 .traffic-nav-link {
   background-color: blue;
   color: #fff;
-  padding: 7px;
+  padding: 3px;
   cursor: pointer;
-  /* font-size: small; */
+  font-size: small;
   border-radius: 1em;
+}
+
+.active {
+  background-color: aquamarine;
 }
 
 /* ------------ Daily Traffic Style ------------*/

@@ -8,6 +8,9 @@ const bell = document.querySelector('.bell-icon');
 const drop = document.querySelector('.dropdown');
 const dropContent = document.querySelectorAll('.dropdown-content');
 const close = document.querySelectorAll('.close');
+const list = document.querySelectorAll('.traffic-nav-link');
+
+let isDisplayed = false;
 
 let trafficData = {
   labels: ["16-22", "23-29", "30-5", "6-12", "13-19", "20-26", "27-3",
@@ -21,7 +24,7 @@ let trafficData = {
 };
 
 
-let trafficOptions = {
+let trafficOptions = {                                            
   aspectRatio: 2,
   animation: {
   duration: 0
@@ -70,9 +73,8 @@ const mobileData = {
   '#7477BF',
   '#78CF82',
   '#51B6C8'
-  ]
-  }]
-  };
+  ]}
+]};
 
 const mobileOptions = {
   legend: {
@@ -122,17 +124,32 @@ let mobileChart = new Chart(mobileCanvas, {
 
 
 bell.addEventListener('click', () => {
-for(let i = 0 ; i < dropContent.length ; i++){
-dropContent[i].style.display = "block";
-}});
+  if(isDisplayed === false){
+    for(let i = 0 ; i < dropContent.length ; i++){
+      dropContent[i].style.display = "block";
+    }
+    isDisplayed = true;
+  } else if (isDisplayed === true) {
+    for(let i = 0 ; i < dropContent.length ; i++){
+      dropContent[i].style.display = "none";
+    }
+    isDisplayed = false;
+  }
+});
 
 
 for(let i = 0 ; i < close.length ; i++){
-close[i].addEventListener('click', () => {
-dropContent[i].remove();
-})
-};
+  close[i].addEventListener('click', () => {
+    dropContent[i].remove();
+})};
 
+for(let i = 0 ; i < list.length ; i++){
+  list[i].addEventListener('click', () => {
+    let current = document.getElementsByClassName("active");
+    current[0].className=current[0].className.replace(" active", "");
+    list[i].className += " active";
+  }
+)};
 
 
 
